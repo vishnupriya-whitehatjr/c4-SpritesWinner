@@ -1,0 +1,56 @@
+var wall1 = createSprite(50, 10,10,400);  
+var wall2 = createSprite(100, 390,10,500);
+var wall3 = createSprite(150, 200,10,200);
+var wall4 = createSprite(200, 10,10,200);
+var wall5 = createSprite(250, 350,10,100);
+var wall6 = createSprite(300, 200,10,200);
+var wall7 = createSprite(350, 10,10,400);
+var ball = createSprite(5, 200,10,10);
+ball.velocityX = 1;
+ball.velocityY = 1;
+
+
+function draw() {
+  background("white");
+  createEdgeSprites();
+  ball.bounceOff(edges);
+  
+  if (keyDown("up")) {
+  ball.velocityY = -1;
+}
+  if (keyDown("down")) {
+  ball.velocityY = 1;
+}
+  if (keyDown("left")) {
+  ball.velocityX = -1;
+}
+  if (keyDown("right")) {
+  ball.velocityX = 1;
+}
+  if(ball.x>370 &&ball.y>370){
+    ball.x = 370;
+    ball.y = 370;
+    textSize(30);
+    text("You Win", 160, 200);
+  }
+  if(ball.bounceOff(wall1)||ball.bounceOff(wall2)||ball.bounceOff(wall3)||ball.isTouching(wall4)||ball.bounceOff(wall5)||ball.bounceOff(wall6)||ball.bounceOff(wall7))
+  {
+  ball.velocityX=0;
+ ball.velocityY=0;
+  }
+  if(ball.velocityX == 0 && ball.velocityY == 0){
+  textSize(30);
+  text("You Lose", 160, 200);
+  }
+  
+  
+  textSize(20);
+  text("End", 350, 390);
+
+ 
+  drawSprites();
+  
+}
+
+
+code.org link : https://studio.code.org/projects/gamelab/YRxussbMmtigoWnc5klpUD7hPFtfqbhDYDjSJ6dhYeY
